@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.zl.smoke.MainActivity" >
+    <item android:id="@+id/action_settings"
+        android:title="开启WiFi"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/search_AP"
+        android:title="搜索热点"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/show_data"
+        android:title="显示数据"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/goto_mapactivity"
+        android:title="进入地图"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+</menu>

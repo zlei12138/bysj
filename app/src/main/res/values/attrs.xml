@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SettingItemView">
+        <attr name="mainText" format="string"/>
+        <attr name="otherText" format="string"/>
+        <attr name="turnImage" format="reference"/>
+        <attr name="bg_color" format="color"/>
+        <attr name="mainTextSize" format="integer"/>
+        <attr name="otherTextSize" format="integer"/>
+        <attr name="showIcon" format="boolean"/>
+        <attr name="showLine" format="boolean"/>
+    </declare-styleable>
+</resources>

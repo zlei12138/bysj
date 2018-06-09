@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--当没有CollapsingToolbarLayout时：
+让toolbar 自动隐藏和显示
+在toolbar下：app:layout_scrollFlags = "scroll|enterAlways" :没有悬停条目
+             app:layout_scrollFlags = "scroll|enterAlwaysCollapsed" ：有悬停条目
+ps：有了CollapsingToolbarLayout，上面的不需要了
+    当有了有了CollapsingToolbarLayout时
+    app:layout_scrollFlags = "scroll|enterAlways"这个属性就加在CollapsingToolbarLayout上面
+-->
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".OpenSLActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:layout_height="wrap_content"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <!--app:contentScrim="@color/colorAccent" 遮蔽的颜色
+            折起来以后背景条的颜色-->
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways"
+            >
+
+            <android.support.v7.widget.Toolbar
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:id="@+id/osl_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize" >
+
+            </android.support.v7.widget.Toolbar>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/osl_tool_backicon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/searchactivity_back_white_36dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/osl_tool_backicon"
+                    android:text="开源许可"
+                    android:textColor="#f7f8f9"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:typeface="serif"
+            android:id="@+id/osl_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:text="请稍后"
+            android:textSize="17sp" />
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
+

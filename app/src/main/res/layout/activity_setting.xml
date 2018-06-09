@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--当没有CollapsingToolbarLayout时：
+让toolbar 自动隐藏和显示
+在toolbar下：app:layout_scrollFlags = "scroll|enterAlways" :没有悬停条目
+             app:layout_scrollFlags = "scroll|enterAlwaysCollapsed" ：有悬停条目
+ps：有了CollapsingToolbarLayout，上面的不需要了
+    当有了有了CollapsingToolbarLayout时
+    app:layout_scrollFlags = "scroll|enterAlways"这个属性就加在CollapsingToolbarLayout上面
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="10dp"
+        android:translationZ="5dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <!--app:contentScrim="@color/colorAccent" 遮蔽的颜色
+            折起来以后背景条的颜色-->
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/colorPrimaryDark">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/setting_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="设置"
+                        android:textColor="#e7e4e4"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBarLayout">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/first_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <zlei.bysj.cslk.SettingItemView
+                    android:id="@+id/map_logo_position"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  高德logo位置"
+                    app:otherText=""
+                    app:showLine="true"
+                    app:turnImage="@drawable/ic_change_history_black_24dp"
+                    />
+
+                <RadioGroup
+                    android:checkedButton="@id/rb_left"
+                    android:layout_marginRight="5dp"
+                    android:layout_alignBottom="@id/map_logo_position"
+                    android:gravity="end"
+                    android:id="@+id/rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="左下" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_middle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="中下" />
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="右下" />
+                </RadioGroup>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <View
+            android:id="@+id/first_black"
+            android:layout_below="@id/first_card"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/sec_card"
+            android:layout_below="@id/first_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <zlei.bysj.cslk.SettingItemView
+                    android:id="@+id/map_zoom_gesture"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  缩放手势"
+                    app:otherText=""
+                    app:showLine="true"
+                    app:turnImage="@drawable/ic_change_history_black_24dp"
+                    />
+
+                <Switch
+                    android:id="@+id/sw_zoom"
+                    android:checked="false"
+                    android:layout_alignTop="@id/map_zoom_gesture"
+                    android:layout_alignRight="@id/map_zoom_gesture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+
+                <zlei.bysj.cslk.SettingItemView
+                    android:layout_below="@id/map_zoom_gesture"
+                    android:id="@+id/map_swipe_gestures"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  滑动手势"
+                    app:otherText=""
+                    app:showLine="true"
+                    app:turnImage="@drawable/ic_change_history_black_24dp"
+                    />
+
+                <Switch
+                    android:id="@+id/sw_swipe"
+                    android:checked="false"
+                    android:layout_alignTop="@id/map_swipe_gestures"
+                    android:layout_alignRight="@id/map_swipe_gestures"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+
+                <zlei.bysj.cslk.SettingItemView
+                    android:layout_below="@id/map_swipe_gestures"
+                    android:id="@+id/map_scale"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  比例尺"
+                    app:otherText=""
+                    app:showLine="true"
+                    app:turnImage="@drawable/ic_change_history_black_24dp"
+                    />
+
+                <Switch
+                    android:id="@+id/sw_scale"
+                    android:checked="false"
+                    android:layout_alignTop="@id/map_scale"
+                    android:layout_alignRight="@id/map_scale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+
+                <zlei.bysj.cslk.SettingItemView
+                    android:layout_below="@id/map_scale"
+                    android:id="@+id/map_compass"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  指南针"
+                    app:otherText=""
+                    app:showLine="true"
+                    app:turnImage="@drawable/ic_change_history_black_24dp"
+                    />
+
+                <Switch
+                    android:id="@+id/sw_compass"
+                    android:checked="false"
+                    android:layout_alignTop="@id/map_compass"
+                    android:layout_alignRight="@id/map_compass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+
+                <zlei.bysj.cslk.SettingItemView
+                    android:layout_below="@id/map_compass"
+                    android:id="@+id/map_language"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  英文地图"
+                    app:otherText=""
+                    app:showLine="true"
+                    app:turnImage="@drawable/ic_change_history_black_24dp"
+                    />
+
+                <Switch
+                    android:id="@+id/sw_language"
+                    android:checked="false"
+                    android:layout_alignTop="@id/map_language"
+                    android:layout_alignRight="@id/map_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <View
+            android:id="@+id/sec_black"
+            android:layout_below="@id/sec_card"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <android.support.v7.widget.CardView
+            android:layout_below="@id/sec_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <zlei.bysj.cslk.SettingItemView
+                    android:id="@+id/contactMe"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  联系作者"
+                    app:otherText=""
+                    app:showLine="true"
+                    app:turnImage="@drawable/ic_keyboard_arrow_right_grey_400_24dp"
+                    />
+
+                <zlei.bysj.cslk.SettingItemView
+                    android:layout_below="@id/contactMe"
+                    android:id="@+id/openSourceLicense"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  开源许可"
+                    app:otherText=""
+                    app:turnImage="@drawable/ic_keyboard_arrow_right_grey_400_24dp"/>
+
+                <zlei.bysj.cslk.SettingItemView
+                    android:layout_below="@id/openSourceLicense"
+                    android:id="@+id/about"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:bg_color="#ffffff"
+                    app:mainText="  关于"
+                    app:otherText=""
+                    app:turnImage="@drawable/ic_keyboard_arrow_right_grey_400_24dp"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="15dp"
+        android:gravity="center"
+        android:text="Designed by ZL 2018\n www.zlei.top"
+        android:textColor="#ababab"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+</RelativeLayout>
+
+
+
+
+
+

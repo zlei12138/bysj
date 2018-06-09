@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <!-- 下面显示的主要是主界面内容 -->
+    <RelativeLayout
+        android:id="@+id/main_content_frame_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:gravity="center">
+
+        <!--<com.amap.api.maps2d.MapView-->
+            <!--android:id="@+id/map"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+        <RelativeLayout
+            android:id="@+id/ralativelayout_mapview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="openRightLayout"
+            android:src="@drawable/icon_c2" />
+
+    </RelativeLayout>
+
+
+    <!-- 右侧滑动栏 -->
+    <LinearLayout
+        android:id="@+id/main_right_drawer_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="3dp"
+                android:paddingRight="5dp"
+                android:paddingTop="3dp"
+                android:background="#d5d8da"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="地图模式"/>
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/rode_TypeA"
+                            android:src="@drawable/map_mode_normal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/map_mode_selected_layer"
+                            android:id="@+id/rode_TypeA_Bg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_marginTop="3dp"
+                        android:textSize="12sp"
+                        android:text="普通地图"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/rode_TypeB"
+                            android:src="@drawable/map_mode_satellite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/rode_TypeB_Bg"
+
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/map_mode_selected_layer"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_marginTop="3dp"
+                        android:textSize="12sp"
+                        android:text="卫星地图"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="3dp"
+                android:paddingRight="5dp"
+                android:paddingTop="3dp"
+                android:background="#d5d8da"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="路段选择"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ScrollView
+                    android:layout_above="@id/sliding_bottom"
+                    android:id="@+id/sv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/button_road1"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="崇文路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road2"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="东水门大桥路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road3"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="南滨路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road4"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="重庆长江大桥路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                        <Button
+                            android:id="@+id/button_road5"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="菜园坝大桥路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road6"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="真武山隧道路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road7"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="腾龙大道路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road8"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="通江大道路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road9"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="丁香路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road10"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="北滨二路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road11"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="北滨一路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                        <Button
+                            android:id="@+id/button_road12"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="渝鲁大道路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                        <Button
+                            android:id="@+id/button_road13"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="海尔路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road14"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="沙滨路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road15"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="经纬大道路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/button_road16"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="紫荆路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                        <Button
+                            android:id="@+id/button_road17"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="金龙路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                        <Button
+                            android:id="@+id/button_road18"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="巴县大道路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                        <Button
+                            android:id="@+id/button_road19"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="大江东路路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                        <Button
+                            android:id="@+id/button_road20"
+                            style="?android:attr/actionButtonStyle"
+                            android:text="朝天门大桥路段"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                </ScrollView>
+
+
+                <LinearLayout
+                    android:layout_marginLeft="15dp"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:id="@+id/sliding_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:textAlignment="textStart"
+                        android:layout_gravity="start"
+                        android:textColor="#696767"
+                        android:textSize="@dimen/sp_16"
+                        android:drawableLeft="@drawable/ic_settings_black_18dp"
+                        android:id="@+id/main2_setting"
+                        style="?android:attr/actionButtonStyle"
+                        android:text="设置"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:textAlignment="textStart"
+                        android:layout_gravity="start"
+                        android:drawableLeft="@drawable/ic_exit_to_app_black_18dp"
+                        android:textSize="@dimen/sp_16"
+                        android:textColor="#696767"
+                        android:id="@+id/main2_myposition"
+                        style="?android:attr/actionButtonStyle"
+                        android:text="关闭"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</android.support.v4.widget.DrawerLayout>
